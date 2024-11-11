@@ -1,0 +1,14 @@
+baseURL: "/"
+languageCode: "pt-br"
+title: "PenhaS"
+copyright: "© 2021"
+defaultContentLanguage: "pt-br"
+disableKinds:
+  - taxonomy
+  - RSS
+  - section
+  - term
+enableGitInfo: true
+enableMissingTranslationPlaceholders: true
+enableRobotsTXT: true
+removePathAccents: true

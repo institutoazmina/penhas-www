@@ -1,0 +1,6 @@
+exec:
+  allow:
+  - ^(dart-)?sass(-embedded)?$
+  - ^git$
+  - ^npx$
+  - ^postcss$
