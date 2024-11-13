@@ -1,0 +1,181 @@
+backend:
+  name: github
+  branch: main
+  repo: "institutoazmina/penhas-www"
+  base_url: https://sveltia-cms-auth.azmina-rootaccount.workers.dev
+media_folder: static/img
+public_folder: /img
+collections:
+  - name: 'data'
+    label: "Data Files"
+    files:
+      - label: 'Sponsors'
+        name: 'sponsors'
+        file: 'data/sponsors.yaml'
+        summary: '{{fields.name}}'
+        fields:
+          - name: sponsors
+            collapsed: true
+            label: Sponsors
+            label_singular: Sponsor
+            root: true
+            widget: list
+            fields:
+              - label: 'draft'
+                name: 'draft'
+                default: true
+                widget: 'boolean'
+              - label: 'name'
+                name: 'name'
+                widget: 'string'
+              - label: 'Link'
+                name: 'link'
+                hint: 'https://...'
+                pattern: ['^https://', 'Must be a valid URL']
+                required: false
+                widget: 'string'
+              - label: 'logotype'
+                name: 'logotype'
+                widget: 'image'
+              - default: 0
+                name: 'weight'
+                label: 'Weight'
+                required: false
+                widget: 'number'
+      - name: 'params'
+        label: 'Configurations'
+        file: 'config/_default/params.yaml'
+        fields:
+          - { label: 'description', name: 'description', widget: 'string' }
+          - { label: 'images', name: 'images', widget: 'string' }
+          - { label: 'institutionalVideo', name: 'institutionalVideo', widget: 'string' }
+  - name: 'testimonial'
+    label: 'Testimonial'
+    folder: 'content/testimonial'
+    create: true
+    slug: '{{slug}}'
+    identifier_field: 'reviewer.name'
+    editor:
+      preview: false
+    fields:
+      - { label: 'Date', name: 'date', widget: 'datetime', default: '{{now}}' }
+      - { label: 'Draft', name: 'draft', widget: 'boolean', default: true }
+      - label: 'Reviewer'
+        name: 'reviewer'
+        widget: 'object'
+        fields:
+          - { label: 'Name', name: 'name', widget: 'string'  }
+          - { label: 'Role', name: 'role', widget: 'string', default: '' }
+      - { label: 'Body', name: 'body', widget: 'markdown' }
+      - { label: 'Weight', name: 'weight', widget: 'number', default: 0 }
+  - name: 'timeline'
+    label: 'Timeline'
+    folder: 'content/timeline'
+    create: true
+    slug: '{{slug}}'
+    editor:
+      preview: false
+    fields:
+      - { label: 'Draft', name: 'draft', widget: 'boolean', default: true }
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - default: 0
+        name: 'year'
+        label: 'year'
+        required: true
+        widget: 'number'
+      - default: 0
+        name: 'month'
+        label: 'month'
+        widget: 'number'
+      - { label: 'Body', name: 'body', widget: 'markdown' }
+      - name: "figure"
+        widget: object
+        fields:
+          - { label: File, name: file, widget: image }
+          - { label: Description, name: description, widget: string, required: true }
+  - name: 'team'
+    label: 'Team member'
+    folder: 'content/team'
+    create: true
+    slug: '{{slug}}'
+    editor:
+      preview: false
+    fields:
+      - { label: 'Draft', name: 'draft', widget: 'boolean', default: true }
+      - { label: 'Name', name: 'title', widget: 'string' }
+      - { label: 'Biography', name: 'body', widget: 'markdown' }
+      - name: "picture"
+        widget: object
+        fields:
+          - { label: File, name: file, widget: image }
+          - { label: Description, name: description, widget: string, required: true }
+      - label: 'Role'
+        name: 'role'
+        widget: "select"
+        options:
+          - { label: "Super chefa", value: "super_chefa" }
+          - { label: "Chefa", value: "chefa" }
+          - { label: "Chefa master", value: "chefa_master" }
+  - name: 'projects'
+    label: 'Projects'
+    folder: 'content/projects'
+    create: true
+    slug: '{{slug}}'
+    editor:
+      preview: false
+    fields:
+      - { label: 'Draft', name: 'draft', widget: 'boolean', default: true }
+      - name: "thumbnail"
+        widget: image
+        label: 'Thumbnail'
+      - { label: 'Name', name: 'name', widget: 'string' }
+      - { label: 'Body', name: 'body', widget: 'markdown' }
+  - name: 'media'
+    label: 'Media'
+    folder: 'content/media'
+    create: true
+    slug: '{{slug}}'
+    editor:
+      preview: false
+    fields:
+      - { label: 'Date', name: 'date', widget: 'datetime', default: '{{now}}' }
+      - { label: 'Draft', name: 'draft', widget: 'boolean', default: true }
+      - { label: 'Name', name: 'name', widget: 'string' }
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - label: 'Permalink'
+        name: 'permalink'
+        widget: 'string'
+        hint: 'https://...'
+        pattern: ['^https://', 'Must be a valid URL']
+      - { label: 'Thumbnail', name: 'thumbnail', widget: 'image', default: '' }
+      - { label: 'Weight', name: 'weight', widget: 'number', default: 0 }
+  - name: 'feature'
+    label: 'Feature'
+    folder: 'content/feature'
+    create: true
+    slug: '{{slug}}'
+    editor:
+      preview: false
+    fields:
+      - { label: 'Draft', name: 'draft', widget: 'boolean', default: true }
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Body', name: 'body', widget: 'markdown' }
+      - name: "figure"
+        widget: object
+        fields:
+          - { label: File, name: file, widget: image }
+          - { label: Description, name: description, widget: string, required: true }
+      - { label: 'Weight', name: 'weight', widget: 'number', default: 0 }
+  - name: 'bigNumber'
+    label: 'Big number'
+    folder: 'content/big_number'
+    create: true
+    slug: '{{slug}}'
+    editor:
+      preview: false
+    fields:
+      - { label: 'Draft', name: 'draft', widget: 'boolean', default: true }
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Body', name: 'body', widget: 'markdown' }
+      - { label: 'Value', name: 'value', widget: 'string' }
+      - { label: 'Weight', name: 'weight', widget: 'number', default: 0 }

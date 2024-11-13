@@ -1,3 +1,3 @@
-# penhas-www
+# PenhaS website
 
 Website of PenhaS app
