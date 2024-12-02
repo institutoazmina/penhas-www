@@ -6,49 +6,6 @@ backend:
 media_folder: static/img
 public_folder: /img
 collections:
-  - name: 'data'
-    label: "Data Files"
-    files:
-      - label: 'Sponsors'
-        name: 'sponsors'
-        file: 'data/sponsors.yaml'
-        summary: '{{fields.name}}'
-        fields:
-          - name: sponsors
-            collapsed: true
-            label: Sponsors
-            label_singular: Sponsor
-            root: true
-            widget: list
-            fields:
-              - label: 'draft'
-                name: 'draft'
-                default: true
-                widget: 'boolean'
-              - label: 'name'
-                name: 'name'
-                widget: 'string'
-              - label: 'Link'
-                name: 'link'
-                hint: 'https://...'
-                pattern: ['^https://', 'Must be a valid URL']
-                required: false
-                widget: 'string'
-              - label: 'logotype'
-                name: 'logotype'
-                widget: 'image'
-              - default: 0
-                name: 'weight'
-                label: 'Weight'
-                required: false
-                widget: 'number'
-      - name: 'params'
-        label: 'Configurations'
-        file: 'config/_default/params.yaml'
-        fields:
-          - { label: 'description', name: 'description', widget: 'string' }
-          - { label: 'images', name: 'images', widget: 'string' }
-          - { label: 'institutionalVideo', name: 'institutionalVideo', widget: 'string' }
   - name: 'testimonial'
     label: 'Testimonial'
     folder: 'content/testimonial'
@@ -166,9 +123,9 @@ collections:
           - { label: File, name: file, widget: image }
           - { label: Description, name: description, widget: string, required: true }
       - { label: 'Weight', name: 'weight', widget: 'number', default: 0 }
-  - name: 'bigNumber'
-    label: 'Big number'
-    folder: 'content/big_number'
+  - name: 'pages'
+    label: 'Pages'
+    folder: 'content'
     create: true
     slug: '{{slug}}'
     editor:
@@ -177,5 +134,113 @@ collections:
       - { label: 'Draft', name: 'draft', widget: 'boolean', default: true }
       - { label: 'Title', name: 'title', widget: 'string' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
-      - { label: 'Value', name: 'value', widget: 'string' }
       - { label: 'Weight', name: 'weight', widget: 'number', default: 0 }
+  - name: 'data'
+    label: "Data Files"
+    files:
+      - name: 'bigNumber'
+        label: 'Big numbers'
+        file: 'data/big_numbers.yaml'
+        summary: '{{fields.description}}'
+        fields:
+          - name: number
+            collapsed: true
+            label: Numbers
+            label_singular: Number
+            root: true
+            widget: list
+            fields:
+              - { label: 'Draft', name: 'draft', widget: 'boolean', default: true }
+              - { label: 'Value', name: 'value', widget: 'string' }
+              - { label: 'Description', name: 'description', widget: 'string' }
+              - { label: 'Weight', name: 'weight', widget: 'number', default: 0 }
+      - label: 'Sponsors'
+        name: 'sponsors'
+        file: 'data/sponsors.yaml'
+        summary: '{{fields.name}}'
+        fields:
+          - name: sponsors
+            collapsed: true
+            label: Sponsors
+            label_singular: Sponsor
+            root: true
+            widget: list
+            fields:
+              - label: 'draft'
+                name: 'draft'
+                default: true
+                widget: 'boolean'
+              - label: 'name'
+                name: 'name'
+                widget: 'string'
+              - label: 'Link'
+                name: 'link'
+                hint: 'https://...'
+                pattern: ['^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube(?:-nocookie)?\.com|youtu.be))(\/(?:[\w\-]+\?v=|embed\/|live\/|v\/)?)([\w\-]+)(\S+)?$', 'Must be a valid URL']
+                required: false
+                widget: 'string'
+              - label: 'logotype'
+                name: 'logotype'
+                widget: 'image'
+              - default: 0
+                name: 'weight'
+                label: 'Weight'
+                required: false
+                widget: 'number'
+      - name: 'params'
+        label: 'Configurations'
+        file: 'config/_default/params.yaml'
+        fields:
+          - { label: 'description', name: 'description', widget: 'string' }
+          - label: 'Institutional video'
+            name: 'institutionalVideo'
+            widget: 'string'
+            hint: 'https://...'
+            pattern: ['^https://', 'Must be a valid URL']
+            required: false
+          - label: 'images'
+            name: 'images'
+            widget: "list"
+            fields:
+              - label: 'file'
+                name: 'file'
+                widget: 'image'
+          - label: "Contact methods"
+            name: "contactMethods"
+            widget: "list"
+            fields:
+              - label: "Name"
+                name: "name"
+                widget: "select"
+                options:
+                  - { label: "E-mail", value: "email" }
+                  - { label: "Facebook", value: "facebook" }
+                  - { label: "Instagram", value: "instagram" }
+                  - { label: "Threads", value: "threads" }
+                  - { label: "TikTok", value: "tiktok" }
+                  - { label: "X", value: "twitter" }
+                  - { label: "Youtube", value: "youtube" }
+              - label: "Link"
+                name: "link"
+                widget: "string"
+                pattern: ['^(https://)|', 'Must be a valid URL']
+# # # # # # # # # # #
+  - name: 'data'
+    label: "Data Files"
+    files:
+      - name: 'bigNumber'
+        label: 'Big numbers'
+        file: 'data/big_numbers.yaml'
+        summary: '{{fields.description}}'
+        fields:
+          - name: number
+            collapsed: true
+            label: Numbers
+            label_singular: Number
+            root: true
+            widget: list
+            fields:
+              - { label: 'Draft', name: 'draft', widget: 'boolean', default: true }
+              - { label: 'Value', name: 'value', widget: 'string' }
+              - { label: 'Description', name: 'description', widget: 'string' }
+              - { label: 'Weight', name: 'weight', widget: 'number', default: 0 }
