@@ -6,4 +6,5 @@ picture:
   file:
   description:
 role: ''
+weight: 0
 ---

@@ -1,7 +1,8 @@
 ---
 draft: true
 name: '{{ replace .File.ContentBaseName "-" " " | title }}'
-link: ''
-logotype: ''
+thumbnail:
+  file:
+  description:
 weight: 0
 ---

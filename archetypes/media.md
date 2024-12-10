@@ -4,6 +4,8 @@ draft: true
 title: '{{ replace .File.ContentBaseName "-" " " | title }}'
 name:
 permalink: ''
-thumbnail: ''
+thumbnail:
+  file:
+  description:
 weight: 0
 ---

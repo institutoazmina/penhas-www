@@ -1,14 +1,14 @@
 backend:
   name: github
   branch: main
-  repo: "institutoazmina/penhas-www"
+  repo: 'institutoazmina/penhas-www'
   base_url: https://sveltia-cms-auth.azmina-rootaccount.workers.dev
 media_folder: static/img
 public_folder: /img
 collections:
-  - name: 'testimonial'
+  - name: 'testimonials'
     label: 'Testimonial'
-    folder: 'content/testimonial'
+    folder: 'content/testimonials'
     create: true
     slug: '{{slug}}'
     identifier_field: 'reviewer.name'
@@ -45,11 +45,11 @@ collections:
         label: 'month'
         widget: 'number'
       - { label: 'Body', name: 'body', widget: 'markdown' }
-      - name: "figure"
+      - name: 'figure'
         widget: object
         fields:
-          - { label: File, name: file, widget: image }
-          - { label: Description, name: description, widget: string, required: true }
+          - { label: File, name: file, widget: 'image' }
+          - { label: Description, name: description, widget: 'string', required: true }
   - name: 'team'
     label: 'Team member'
     folder: 'content/team'
@@ -61,18 +61,18 @@ collections:
       - { label: 'Draft', name: 'draft', widget: 'boolean', default: true }
       - { label: 'Name', name: 'title', widget: 'string' }
       - { label: 'Biography', name: 'body', widget: 'markdown' }
-      - name: "picture"
+      - name: 'picture'
         widget: object
         fields:
-          - { label: File, name: file, widget: image }
-          - { label: Description, name: description, widget: string, required: true }
+          - { label: File, name: file, widget: 'image' }
+          - { label: Description, name: description, widget: 'string', required: true }
       - label: 'Role'
         name: 'role'
-        widget: "select"
+        widget: 'select'
         options:
-          - { label: "Super chefa", value: "super_chefa" }
-          - { label: "Chefa", value: "chefa" }
-          - { label: "Chefa master", value: "chefa_master" }
+          - { label: 'Super chefa', value: 'super_chefa' }
+          - { label: 'Chefa', value: 'chefa' }
+          - { label: 'Chefa master', value: 'chefa_master' }
   - name: 'projects'
     label: 'Projects'
     folder: 'content/projects'
@@ -82,9 +82,12 @@ collections:
       preview: false
     fields:
       - { label: 'Draft', name: 'draft', widget: 'boolean', default: true }
-      - name: "thumbnail"
-        widget: image
+      - name: 'thumbnail'
         label: 'Thumbnail'
+        widget: object
+        fields:
+          - { label: File, name: file, widget: 'image' }
+          - { label: Description, name: description, widget: 'string', required: true }
       - { label: 'Name', name: 'name', widget: 'string' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
   - name: 'media'
@@ -104,11 +107,16 @@ collections:
         widget: 'string'
         hint: 'https://...'
         pattern: ['^https://', 'Must be a valid URL']
-      - { label: 'Thumbnail', name: 'thumbnail', widget: 'image', default: '' }
+      - name: 'thumbnail'
+        label: 'Thumbnail'
+        widget: object
+        fields:
+          - { label: File, name: file, widget: 'image' }
+          - { label: Description, name: description, widget: 'string', required: true }
       - { label: 'Weight', name: 'weight', widget: 'number', default: 0 }
   - name: 'feature'
     label: 'Feature'
-    folder: 'content/feature'
+    folder: 'content/features'
     create: true
     slug: '{{slug}}'
     editor:
@@ -117,11 +125,11 @@ collections:
       - { label: 'Draft', name: 'draft', widget: 'boolean', default: true }
       - { label: 'Title', name: 'title', widget: 'string' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
-      - name: "figure"
+      - name: 'figure'
         widget: object
         fields:
-          - { label: File, name: file, widget: image }
-          - { label: Description, name: description, widget: string, required: true }
+          - { label: File, name: file, widget: 'image' }
+          - { label: Description, name: description, widget: 'string', required: true }
       - { label: 'Weight', name: 'weight', widget: 'number', default: 0 }
   - name: 'pages'
     label: 'Pages'
@@ -136,7 +144,7 @@ collections:
       - { label: 'Body', name: 'body', widget: 'markdown' }
       - { label: 'Weight', name: 'weight', widget: 'number', default: 0 }
   - name: 'data'
-    label: "Data Files"
+    label: 'Data Files'
     files:
       - name: 'bigNumber'
         label: 'Big numbers'
@@ -200,47 +208,27 @@ collections:
             required: false
           - label: 'images'
             name: 'images'
-            widget: "list"
+            widget: 'list'
             fields:
               - label: 'file'
                 name: 'file'
                 widget: 'image'
-          - label: "Contact methods"
-            name: "contactMethods"
-            widget: "list"
+          - label: 'Contact methods'
+            name: 'contactMethods'
+            widget: 'list'
             fields:
-              - label: "Name"
-                name: "name"
-                widget: "select"
+              - label: 'Name'
+                name: 'name'
+                widget: 'select'
                 options:
-                  - { label: "E-mail", value: "email" }
-                  - { label: "Facebook", value: "facebook" }
-                  - { label: "Instagram", value: "instagram" }
-                  - { label: "Threads", value: "threads" }
-                  - { label: "TikTok", value: "tiktok" }
-                  - { label: "X", value: "twitter" }
-                  - { label: "Youtube", value: "youtube" }
-              - label: "Link"
-                name: "link"
-                widget: "string"
+                  - { label: 'E-mail', value: 'email' }
+                  - { label: 'Facebook', value: 'facebook' }
+                  - { label: 'Instagram', value: 'instagram' }
+                  - { label: 'Threads', value: 'threads' }
+                  - { label: 'TikTok', value: 'tiktok' }
+                  - { label: 'X', value: 'twitter' }
+                  - { label: 'Youtube', value: 'youtube' }
+              - label: 'Link'
+                name: 'link'
+                widget: 'string'
                 pattern: ['^(https://)|', 'Must be a valid URL']
-# # # # # # # # # # #
-  - name: 'data'
-    label: "Data Files"
-    files:
-      - name: 'bigNumber'
-        label: 'Big numbers'
-        file: 'data/big_numbers.yaml'
-        summary: '{{fields.description}}'
-        fields:
-          - name: number
-            collapsed: true
-            label: Numbers
-            label_singular: Number
-            root: true
-            widget: list
-            fields:
-              - { label: 'Draft', name: 'draft', widget: 'boolean', default: true }
-              - { label: 'Value', name: 'value', widget: 'string' }
-              - { label: 'Description', name: 'description', widget: 'string' }
-              - { label: 'Weight', name: 'weight', widget: 'number', default: 0 }
