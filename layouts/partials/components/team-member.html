@@ -1,0 +1,20 @@
+{{ if or .Title .Content }}
+	<div class="h-card" id="team-member__{{ .File.BaseFileName }}">
+		{{ if .Title }}
+			<h3>
+				<span class="p-name">
+					{{ .Title }}
+				</span>
+				<span class="p-job-title">{{ .Params.role }}</span>
+			</h3>
+		{{ end }}
+
+		{{ with .Content }}
+			<div class="p-note">{{ . }}</div>
+		{{ end }}
+
+		{{ with .Params.picture }}
+			<img class="u-photo" src="{{ .file }}" alt="{{ .description }}"/>
+		{{ end }}
+	</div>
+{{ end }}

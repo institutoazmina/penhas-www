@@ -1,0 +1,17 @@
+{{ with .Site.GetPage "/timeline" }}
+	<section>
+		{{ with .Title }}
+			<h2>{{ . }}</h2>
+		{{ end }}
+
+		{{ .Content }}
+
+		{{ with .Resources.ByType "page" }}
+			<dl class="timeline">
+				{{ range . }}
+					{{ partial "components/timeline-item.html" . }}
+				{{ end }}
+			</dl>
+		{{ end }}
+	</section>
+{{ end }}

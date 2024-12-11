@@ -1,0 +1,11 @@
+{{ with .Site.GetPage "/projects" }}
+	<section>
+		<h2>{{ .Title }}</h2>
+
+		{{ .Content }}
+
+		{{ range .Resources.ByType "page" }}
+			{{ partial "components/project.html" . }}
+		{{ end }}
+	</section>
+{{ end }}

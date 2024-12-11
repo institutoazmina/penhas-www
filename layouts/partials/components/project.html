@@ -1,0 +1,13 @@
+{{ if or .Title .Content }}
+	<article class="project" id="project__{{ .File.BaseFileName }}">
+		{{ with .Title }}
+			<h3 class="project__title">{{ . }}</h3>
+		{{ end }}
+		{{ with .Params.thumbnail }}
+			<img src="{{ .file }}" alt="{{ .description }}" class="project__thumb">
+		{{ end }}
+		{{ with .Content }}
+			<div class="project__content">{{ . }}</div>
+		{{ end }}
+	</article>
+{{ end }}

@@ -1,0 +1,25 @@
+{{ if or .Title .Content }}
+	<div class="timeline-item" id="timeline-item__{{ .File.BaseFileName }}">
+		{{ with .Title }}
+			<dt class="timeline-item__title">{{ . }}</dt>
+		{{ end }}
+		{{ if .Params.year }}
+			<dt class="timeline-item__year">
+				{{ .Params.year }}
+			</dt>
+		{{ end }}
+		{{ if .Params.month }}
+			<dt class="timeline-item__month">
+				{{ .Params.month }}
+			</dt>
+		{{ end }}
+		{{ if .Content }}
+			<dd class="timeline-item__content">
+				{{ with .Params.thumbnail }}
+					<img src="{{ .file }}" alt="{{ .description }}" class="timeline-item__thumb">
+				{{ end }}
+				{{ .Content }}
+			</dd>
+		{{ end }}
+	</div>
+{{ end }}

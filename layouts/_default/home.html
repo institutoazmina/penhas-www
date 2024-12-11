@@ -1,0 +1,60 @@
+{{ define "main" }}
+	<main>
+		<article class="intro">
+			<h1 class="intro__title">{{ .Site.Title }}</h1>
+
+			{{ with .Site.Params.introText }}
+				<div class="intro__text">
+					{{ . | $.RenderString }}
+				</div>
+			{{ end }}
+
+			{{ with .Site.Params.storeLinks }}
+				<p>{{ i18n "downloadOurApp" }}</p>
+
+				<ul class="app-store">
+					{{ with .playStore }}
+						<li class="app-store__item app-store__item--play-store">
+							<a href="{{ . }}" class="app-stores__link" target="_blank">
+								playStore
+							</a>
+						</li>
+					{{ end }}
+					{{ with .appStore	 }}
+						<li class="app-store__item app-store__item--app-store">
+							<a href="{{ . }}" class="app-stores__link" target="_blank">
+								appStore
+							</a>
+						</li>
+					{{ end }}
+				</ul>
+			{{ end }}
+		</article>
+
+		<article class="mission">
+			<h2>{{ i18n "ourMission" }}</h2>
+
+			{{ with $.Site.Params.missionStatement }}
+				{{ . | $.RenderString (dict "display" "block") }}
+			{{ end }}
+
+			{{ with $.Site.Params.institutionalVideo }}
+				<iframe class="youtube-player" type="text/html" width="640" height="385" src="{{ . }}" allowfullscreen frameborder="0"></iframe>
+			{{ end }}
+		</article>
+
+		{{ with .Site.GetPage "/testimonials" }}
+			<article>
+				{{ with .Title }}
+					<h2>{{ . }}</h2>
+				{{ end }}
+
+				{{ .Content }}
+
+				{{ range first 4 (.Resources.ByType "page") }}
+					{{ partial "components/testimonial.html" . }}
+				{{ end }}
+			</article>
+		{{ end }}
+	</main>
+{{ end }}

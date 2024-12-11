@@ -1,0 +1,13 @@
+{{ with .Site.GetPage "/testimonials" }}
+	<section>
+		{{ with .Title }}
+			<h2>{{ . }}</h2>
+		{{ end }}
+
+		{{ .Content }}
+
+		{{ range .Resources.ByType "page" }}
+			{{ partial "components/testimonial.html" . }}
+		{{ end }}
+	</section>
+{{ end }}

@@ -1,0 +1,16 @@
+{{ define "title" }}
+	{{ .Title }}
+	&ndash;
+	{{ .Site.Title }}
+{{ end }}
+{{ define "main" }}
+	<article role="main">
+		<h1>{{ .Title }}</h1>
+
+		{{ .Content }}
+
+		{{ partial "testimonials.html" . }}
+
+		{{ partial "media-clipping.html" . }}
+	</article>
+{{ end }}

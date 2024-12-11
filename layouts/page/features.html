@@ -1,0 +1,26 @@
+{{ define "title" }}
+	{{ .Title }}
+	&ndash;
+	{{ .Site.Title }}
+{{ end }}
+{{ define "main" }}
+	<article role="main">
+		features
+		<h1>{{ .Title }}</h1>
+
+		{{ .Content }}
+
+		{{ with .Resources.ByType "page" }}
+			<dl class="features">
+				{{ range . }}
+					{{ if or .Title .Content }}
+						<div class="features__item">
+							<dt class="features__title">{{ .Title }}</dt>
+							<dd class="features__content">{{ .Content }}</dd>
+						</div>
+					{{ end }}
+				{{ end }}
+			</dl>
+		{{ end }}
+	{{ end }}
+</article>

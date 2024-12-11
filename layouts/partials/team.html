@@ -1,0 +1,11 @@
+{{ with .Site.GetPage "/team" }}
+	<section>
+		<h2>{{ .Title }}</h2>
+
+		{{ .Content }}
+
+		{{ range .Resources.ByType "page" }}
+			{{ partial "components/team-member.html" . }}
+		{{ end }}
+	</section>
+{{ end }}

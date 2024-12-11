@@ -1,0 +1,30 @@
+{{ with .Site.GetPage "/media" }}
+	<section>
+		<h2>{{ .Title }}</h2>
+
+		{{ .Content }}
+
+		{{ with .Resources.ByType "page" }}
+			<ul class="media-clipping">
+				{{ range first 4 . }}
+					<li class="media-clipping__item media-clipping__with-thumb">
+						<a href="{{ .Params.permalink }}" class="media-clipping__link" target="_blank">
+							{{ with .Params.thumbnail }}
+								<img src="{{ .file }}" alt="{{ .description }}" class="project__thumb">
+							{{ end }}
+							{{ .Title }}
+						</a>
+					</li>
+				{{ end }}
+
+				{{ range after 4 . }}
+					<li class="media-clipping__item">
+						<a href="{{ .Params.permalink }}" class="media-clipping__link" target="_blank">
+							{{ .Title }}
+						</a>
+					</li>
+				{{ end }}
+			</ul>
+		{{ end }}
+	</section>
+{{ end }}

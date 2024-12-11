@@ -1,6 +1,8 @@
 description:
 images:
-institutionalVideo:
+introText: 'Your intro text here.'
+institutionalVideo: https://www.youtube.com/embed/OXl4guI0Zk4
+missionStatement: 'Your mission statement here.'
 storeLinks:
-  playStore:
+  playStore: 'https://play.google.com/store/apps/details?id=penhas.com.br'
   appStore: 'https://apps.apple.com/us/app/your-app/id1234567890'

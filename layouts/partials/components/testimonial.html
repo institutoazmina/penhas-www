@@ -1,0 +1,18 @@
+{{ if .Content }}
+	<figure class="testimonial" id="testimonial__{{ .File.BaseFileName }}">
+		<blockquote class="testimonial__content">
+			{{ .Content }}
+		</blockquote>
+		{{ with .Params.reviewer }}
+			<figcaption class="blockquote-caption" class="testimonial__caption">
+				<span class="testimonial__author">
+					{{ .name }}
+				</span>
+
+				{{ with .role }}
+					<i class="testimonial__author-role">{{ . }}</i>
+				{{ end }}
+			</figcaption>
+		{{ end }}
+	</figure>
+{{ end }}
