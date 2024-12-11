@@ -12,10 +12,3 @@ enableGitInfo: true
 enableMissingTranslationPlaceholders: true
 enableRobotsTXT: true
 removePathAccents: true
-markup:
-  goldmark:
-    parser:
-      wrapStandAloneImageWithinParagraph: false
-      attribute:
-        block: true
-        title: true
