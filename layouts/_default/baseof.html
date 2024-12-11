@@ -1,7 +1,9 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
 	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
 	<title>{{ block "title" . }}
 		{{ .Site.Title }}
 	{{ end }}</title>
@@ -10,6 +12,13 @@
 	{{ template "_internal/opengraph.html" . }}
 	{{ template "_internal/schema.html" . }}
 	{{ template "_internal/twitter_cards.html" . }}
+
+	<link rel="icon" href="/favicon.ico" sizes="any">
+	<link rel="icon" href="/icon.svg" type="image/svg+xml">
+	<link rel="apple-touch-icon" href="icon.png">
+
+	<link rel="manifest" href="site.webmanifest">
+	<meta name="theme-color" content="#fafafa">
 </head>
 <body>
 	<header class="site-header">
