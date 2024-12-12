@@ -7,4 +7,5 @@ picture:
   description:
 role: ''
 weight: 0
+headless: true
 ---

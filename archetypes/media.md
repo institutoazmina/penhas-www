@@ -8,4 +8,5 @@ thumbnail:
   file:
   description:
 weight: 0
+headless: true
 ---

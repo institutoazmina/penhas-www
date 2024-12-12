@@ -5,4 +5,5 @@ build:
   publishResources: false
   render: never
 title: Depoimentos
+headless: false
 ---

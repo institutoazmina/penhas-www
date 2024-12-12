@@ -6,4 +6,5 @@ month:
 figure:
   file: ''
   description: ''
+headless: true
 ---

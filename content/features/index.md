@@ -5,6 +5,7 @@ title: 'Funcionalidades'
 description:
 slug: funcionalidades
 layout: features
+headless: false
 ---
 
 ## Acolhimento, informação, pedido de ajuda

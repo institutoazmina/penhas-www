@@ -5,4 +5,5 @@ build:
   publishResources: false
   render: never
 title: Quem faz o PenhaS
+headless: false
 ---

@@ -7,4 +7,5 @@ thumbnail:
   file: /img/logo-azmina.svg
   description:
 weight: 0
+headless: true
 ---

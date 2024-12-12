@@ -134,6 +134,7 @@ collections:
   - name: 'pages'
     label: 'Pages'
     folder: 'content'
+    filter: { field: "headless", value: false }
     create: true
     slug: '{{slug}}'
     editor:
@@ -143,6 +144,13 @@ collections:
       - { label: 'Title', name: 'title', widget: 'string' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
       - { label: 'Weight', name: 'weight', widget: 'number', default: 0 }
+      - label: "Menus"
+        name: "menus"
+        widget: "select"
+        multiple: true
+        options:
+          - { label: "Main", value: "main" }
+          - { label: "Footer", value: "footer" }
   - name: 'data'
     label: 'Data Files'
     files:

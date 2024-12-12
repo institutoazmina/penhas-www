@@ -5,6 +5,10 @@ title: 'Impacto'
 description: ''
 slug: impacto
 layout: impact
+headless: false
+menus:
+- main
+- footer
 ---
 
 ## Enfrentamento à violência
