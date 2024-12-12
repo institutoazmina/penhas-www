@@ -41,6 +41,8 @@
 			{{ with $.Site.Params.institutionalVideo }}
 				<iframe class="youtube-player" type="text/html" width="640" height="385" src="{{ . }}" allowfullscreen frameborder="0"></iframe>
 			{{ end }}
+
+			{{ partial "big-numbers.html" . }}
 		</article>
 
 		{{ with .Site.GetPage "/testimonials" }}

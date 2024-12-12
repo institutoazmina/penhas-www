@@ -1,0 +1,12 @@
+{{ $nonDrafts := where $.Site.Data.big_numbers "draft" "eq" false }}
+
+{{ with $nonDrafts }}
+	<dl class="big-numbers">
+		{{ range sort . "weight" }}
+			<div class="big-numbers__item">
+				<dt class="big-numbers__number">{{ .value }}</dt>
+				<dd class="big-numbers__description">{{ .description }}</dd>
+			</div>
+		{{ end }}
+	</dl>
+{{ end }}

@@ -2,3 +2,7 @@
   value: 50 mil
   description: pessoas curiosas
   weight: 4
+- draft: false
+  value: 50 milhões
+  description: Outras pessoas
+  weight: -3
