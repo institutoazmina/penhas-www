@@ -52,7 +52,7 @@
 				{{ .Content }}
 
 				{{ range first 4 (.Resources.ByType "page") }}
-					{{ partial "components/testimonial.html" . }}
+					{{ partial "items/testimonial.html" . }}
 				{{ end }}
 			</article>
 		{{ end }}

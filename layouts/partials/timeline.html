@@ -9,7 +9,7 @@
 		{{ with .Resources.ByType "page" }}
 			<dl class="timeline">
 				{{ range . }}
-					{{ partial "components/timeline-item.html" . }}
+					{{ partial "items/timeline-item.html" . }}
 				{{ end }}
 			</dl>
 		{{ end }}

@@ -5,7 +5,7 @@
 		{{ .Content }}
 
 		{{ range .Resources.ByType "page" }}
-			{{ partial "components/project.html" . }}
+			{{ partial "items/project.html" . }}
 		{{ end }}
 	</section>
 {{ end }}
