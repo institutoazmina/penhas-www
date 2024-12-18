@@ -31,5 +31,7 @@
 	{{ block "footer" . }}
 		{{ partial "menu.html" (dict "menuID" "footer" "page" .) }}
 	{{ end }}
+
+	{{ partial "scripts.html" . }}
 </body>
 </html>
