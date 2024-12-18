@@ -1,15 +1,45 @@
 class NewsComponent extends HTMLElement {
   async connectedCallback() {
-    const noticias = await this.fetchNoticias();
-    this.renderNoticias(noticias);
+    this.removeAttribute('hidden');
+    this.renderLoading();
+    try {
+      const news = await this.fetchNews();
+      if (Array.isArray(news) && news.length > 0) {
+        this.renderNews(news);
+      } else {
+        this.renderNoNews();
+      }
+    } catch (error) {
+      this.renderError();
+    }
   }
 
-  async fetchNoticias() {
-    const response = await fetch('https://azmina.com.br/wp-json/az_mina/posts?type=az_coluna_article&az_coluna=2115&offset=6&per_page=6');
-    return response.json();
+  async fetchNews() {
+    try {
+      const response = await fetch(
+        'https://azmina.com.br/wp-json/az_mina/posts?type=az_coluna_article&az_coluna=2115&offset=6&per_page=6'
+      );
+
+      if (!response.ok) {
+        throw new Error(`Error: ${response.status} - ${response.statusText}`);
+      }
+
+      return response.json();
+    } catch (error) {
+      console.error('Error fetching news:', error);
+      throw new Error('Failed to load news. Please try again later.');
+    }
   }
 
-  renderNoticias(news) {
+  renderLoading() {
+    this.innerHTML = `
+      <div>
+        <p>Carregando...</p>
+      </div>
+    `;
+  }
+
+  renderNews(news) {
     this.innerHTML = `
       <div>
         ${news.map(singleNews => `
@@ -26,6 +56,22 @@ class NewsComponent extends HTMLElement {
             </article>
           </div>
         `).join('')}
+      </div>
+    `;
+  }
+
+  renderNoNews() {
+    this.innerHTML = `
+      <div>
+        <p>Nenhuma notícia disponível no momento.</p>
+      </div>
+    `;
+  }
+
+  renderError() {
+    this.innerHTML = `
+      <div>
+        <p>Erro ao carregar as notícias, tente recarregar a página ou tente novamente mais tarde.</p>
       </div>
     `;
   }
